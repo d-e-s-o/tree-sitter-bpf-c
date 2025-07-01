@@ -178,8 +178,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "tree-sitter-c"
-version = "0.24.1"
+name = "tree-sitter-bpf-c"
+version = "0.1.0"
 dependencies = [
  "cc",
  "tree-sitter",
