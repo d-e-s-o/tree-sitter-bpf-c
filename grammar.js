@@ -28,5 +28,15 @@ module.exports = grammar(C, {
       field('declarator', $._declarator),
       field('body', $.compound_statement),
     ),
+    
+    _field_declaration_list_item: $ => choice(
+      seq($.call_expression, ';'),
+      $.field_declaration,
+      $.preproc_def,
+      $.preproc_function_def,
+      $.preproc_call,
+      alias($.preproc_if_in_field_declaration_list, $.preproc_if),
+      alias($.preproc_ifdef_in_field_declaration_list, $.preproc_ifdef),
+    ),
   }
 });

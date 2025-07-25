@@ -71,3 +71,102 @@ int BPF_KPROBE(kprobe__cap_capable, const struct cred *cred,
             (identifier)
             (identifier)
             (identifier)))))))
+
+================================================================================
+__uint macro with sizeof operator
+================================================================================
+
+struct{
+	__uint(type, BPF_MAP_TYPE_HASH);
+  __type(key, struct ipv6hdr);
+  int bar;
+  __uint(value, 15^23);
+  int foo;
+  __uint(value, sizeof(struct ipv6hdr));
+} name;
+
+--------------------------------------------------------------------------------
+(translation_unit
+      (declaration
+        (struct_specifier
+          (field_declaration_list
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier)
+                (identifier)))
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier)
+                (ERROR
+                  (identifier))
+                (identifier)))
+            (field_declaration
+              (primitive_type)
+              (field_identifier))
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier)
+                (binary_expression
+                  (number_literal)
+                  (number_literal))))
+            (field_declaration
+              (primitive_type)
+              (field_identifier))
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier)
+                (sizeof_expression
+                  (type_descriptor
+                    (struct_specifier
+                      (type_identifier))))))))
+        (identifier)))
+
+
+================================================================================
+__uint macro with hard math
+================================================================================
+
+struct {
+  int bar;
+  __uint(value, 15^23+89*34/10);
+  int foo;
+  __uint(value, sizeof(struct ipv6hdr));
+} name;
+
+--------------------------------------------------------------------------------
+(translation_unit
+      (declaration
+        (struct_specifier
+          (field_declaration_list
+            (field_declaration
+              (primitive_type)
+              (field_identifier))
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier)
+                (binary_expression
+                  (number_literal)
+                  (binary_expression
+                    (number_literal)
+                    (binary_expression
+                      (binary_expression
+                        (number_literal)
+                        (number_literal))
+                      (number_literal))))))
+            (field_declaration
+              (primitive_type)
+              (field_identifier))
+            (call_expression
+              (identifier)
+              (argument_list
+                (identifier)
+                (sizeof_expression
+                  (type_descriptor
+                    (struct_specifier
+                      (type_identifier))))))))
+        (identifier)))

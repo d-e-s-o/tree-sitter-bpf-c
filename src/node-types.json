@@ -1612,6 +1612,10 @@
       "required": false,
       "types": [
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
           "type": "field_declaration",
           "named": true
         },
@@ -2796,6 +2800,10 @@
       "required": false,
       "types": [
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
           "type": "declaration",
           "named": true
         },
@@ -2892,6 +2900,10 @@
       "required": false,
       "types": [
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
           "type": "declaration",
           "named": true
         },
@@ -2958,6 +2970,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "call_expression",
+          "named": true
+        },
         {
           "type": "declaration",
           "named": true
@@ -3119,6 +3135,10 @@
       "required": false,
       "types": [
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
           "type": "declaration",
           "named": true
         },
@@ -3214,6 +3234,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "call_expression",
+          "named": true
+        },
         {
           "type": "declaration",
           "named": true
