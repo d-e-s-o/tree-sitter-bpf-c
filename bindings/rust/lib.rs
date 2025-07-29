@@ -7,9 +7,11 @@
 //! use tree_sitter::Parser;
 //!
 //! let code = r#"
-//! int double(int x) {
-//!     return x * 2;
-//! }
+//!   SEC("kprobe/cap_capable")
+//!   int BPF_KPROBE(kprobe__cap_capable, const struct cred *cred,
+//!                  struct user_namespace *targ_ns, int cap, int cap_opt) {
+//!   	return record_cap(ctx, cred, targ_ns, cap, cap_opt);
+//!   }
 //! "#;
 //! let mut parser = Parser::new();
 //! parser.set_language(&tree_sitter_bpf_c::language()).expect("Error loading BPF C grammar");

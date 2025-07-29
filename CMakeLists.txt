@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-bpf-c
-        VERSION "0.2.1"
+        VERSION "0.2.2"
         DESCRIPTION "tree-sitter grammar for BPF C"
         HOMEPAGE_URL "https://github.com/d-e-s-o/tree-sitter-bpf-c"
         LANGUAGES C)

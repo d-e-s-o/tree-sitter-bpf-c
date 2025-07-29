@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-bpf-c",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "tree-sitter grammar for BPF C",
   "repository": "https://github.com/d-e-s-o/tree-sitter-bpf-c",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "*.wasm"
   ],
   "dependencies": {
+    "nan": "^2.23.0",
     "node-addon-api": "^8.2.1",
     "node-gyp-build": "^4.8.2",
     "tree-sitter-c": "^0.24.1"
