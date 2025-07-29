@@ -23,6 +23,7 @@ int handle__sched_switch(void) {
 ================================================================================
 BPF program with SEC(...) macro edition
 ================================================================================
+
 SEC("kprobe/cap_capable")
 
 int BPF_KPROBE(kprobe__cap_capable, const struct cred *cred,
@@ -71,3 +72,100 @@ int BPF_KPROBE(kprobe__cap_capable, const struct cred *cred,
             (identifier)
             (identifier)
             (identifier)))))))
+
+================================================================================
+__uint macro with sizeof operator usage
+================================================================================
+
+struct{
+  __uint(a, sizeof(struct bpf_sock_ops));
+  int b;
+  __uint(a, b);
+};
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+      (struct_specifier
+        (field_declaration_list
+          (preproc_call_expression
+            (identifier)
+            (identifier)
+            (sizeof_expression
+              (type_descriptor
+                (struct_specifier
+                  (type_identifier)))))
+          (field_declaration
+            (primitive_type)
+            (field_identifier))
+          (preproc_call_expression
+            (identifier)
+            (identifier)
+            (identifier)))))
+
+================================================================================
+__uint macro with incorrect argument type
+================================================================================
+
+struct{
+  __uint(15, sizeof(struct bpf_sock_ops));
+  int b;
+} name;
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+      (ERROR
+        (identifier)
+        (number_literal))
+      (expression_statement
+        (sizeof_expression
+          (type_descriptor
+            (struct_specifier
+              (type_identifier))))
+        (ERROR))
+      (declaration
+        (primitive_type)
+        (identifier))
+      (ERROR)
+      (type_identifier))
+
+================================================================================
+__uint macro with hard math
+================================================================================
+
+int __uint = 16;
+struct{
+  __uint(a, 1 - 15^23 + 38 * 3/2 & 14 | 15);
+} name;
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+      (declaration
+        (primitive_type)
+        (init_declarator
+          (identifier)
+          (number_literal)))
+      (declaration
+        (struct_specifier
+          (field_declaration_list
+            (preproc_call_expression
+              (identifier)
+              (identifier)
+              (binary_expression
+                (binary_expression
+                  (binary_expression
+                    (number_literal)
+                    (number_literal))
+                  (binary_expression
+                    (binary_expression
+                      (number_literal)
+                      (binary_expression
+                        (binary_expression
+                          (number_literal)
+                          (number_literal))
+                        (number_literal)))
+                    (number_literal)))
+                (number_literal)))))
+        (identifier)))
