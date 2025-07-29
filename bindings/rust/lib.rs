@@ -1,10 +1,15 @@
-//! This crate provides BpfC language support for the [tree-sitter] parsing library.
+//! This crate provides BPF C language support for the [tree-sitter] parsing library.
 //!
 //! Typically, you will use the [`LANGUAGE`] constant to add this language to a
 //! tree-sitter [`Parser`], and then use the parser to parse some code:
 //!
 //! ```
 //! let code = r#"
+//!   SEC("kprobe/cap_capable")
+//!   int BPF_KPROBE(kprobe__cap_capable, const struct cred *cred,
+//!                  struct user_namespace *targ_ns, int cap, int cap_opt) {
+//!   	return record_cap(ctx, cred, targ_ns, cap, cap_opt);
+//!   }
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
 //! let language = tree_sitter_bpf_c::LANGUAGE;
