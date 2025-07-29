@@ -1,5 +1,5 @@
-Unreleased
-----------
+0.2.2
+-----
 - Added support for `__uint` macro in `struct` definition
 
 
