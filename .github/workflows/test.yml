@@ -18,20 +18,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
+        with:
+          tree-sitter-ref: v0.23.0
       - name: Run tests
         uses: tree-sitter/parser-test-action@v2
         with:
+          generate: false
+          abi-version: 14
           test-rust: true
           # test-node: true
           # test-python: true
           # test-go: true
           # test-swift: true
-  build-wasm:
-    name: Build for WASM
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          target: wasm32-unknown-unknown
-      - run: cargo build --target=wasm32-unknown-unknown

@@ -27,10 +27,9 @@
     "*.wasm"
   ],
   "dependencies": {
-    "nan": "^2.23.0",
-    "node-addon-api": "^8.2.1",
-    "node-gyp-build": "^4.8.2",
-    "tree-sitter-c": "^0.24.1"
+    "tree-sitter-c": "^0.24.1",
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.2"
   },
   "devDependencies": {
     "prebuildify": "^6.0.1",
@@ -47,6 +46,14 @@
   "scripts": {
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
-    "test": "node --test bindings/node/*_test.js"
-  }
+    "test": "node --test bindings/node/*_test.js",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.bpf_c",
+      "injection-regex": "^bpf_c$"
+    }
+  ]
 }
