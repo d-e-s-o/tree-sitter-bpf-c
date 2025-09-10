@@ -1,7 +1,6 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "0": "c",
   "name": "bpf_c",
-  "inherits": "c",
   "word": "identifier",
   "rules": {
     "translation_unit": {
@@ -9847,6 +9846,5 @@
     "_field_declarator",
     "_type_declarator",
     "_abstract_declarator"
-  ],
-  "reserved": {}
+  ]
 }
