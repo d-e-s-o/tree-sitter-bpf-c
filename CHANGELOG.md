@@ -1,5 +1,5 @@
-Unreleased
-----------
+0.2.3
+-----
 - Added highlight queries via `HIGHLIGHTS_QUERY` constant
 
 
