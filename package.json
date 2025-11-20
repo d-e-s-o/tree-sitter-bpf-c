@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-bpf-c",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "tree-sitter grammar for BPF C",
   "repository": "https://github.com/d-e-s-o/tree-sitter-bpf-c",
   "license": "MIT",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.25.6"
+    "tree-sitter-cli": "^0.25.10"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.1"
